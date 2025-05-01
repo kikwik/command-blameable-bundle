@@ -20,7 +20,8 @@
         "phpunit/phpunit": ">9.0",
         "symfony/yaml": "^6.4|^7.0",
         "doctrine/orm": "3.*",
-        "doctrine/doctrine-bundle": "2.*"
+        "doctrine/doctrine-bundle": "2.*",
+        "ext-pdo_sqlite": "*"
     },
     "autoload": {
         "psr-4": {

@@ -6,7 +6,6 @@ use Kikwik\CommandBlameableBundle\Tests\Util\App\Entity\Article;
 use Kikwik\CommandBlameableBundle\Tests\Util\CustomTestCase;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\ApplicationTester;
-use Symfony\Component\Console\Tester\CommandTester;
 
 class CommandTest extends CustomTestCase
 {
