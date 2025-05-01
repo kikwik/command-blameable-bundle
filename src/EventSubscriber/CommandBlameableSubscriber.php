@@ -3,6 +3,7 @@
 namespace Kikwik\CommandBlameableBundle\EventSubscriber;
 
 use Gedmo\Blameable\BlameableListener;
+use Kikwik\CommandBlameableBundle\ActionProvider\CommandActionProvider;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\Console\Event\ConsoleCommandEvent;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
@@ -26,7 +27,14 @@ class CommandBlameableSubscriber implements EventSubscriberInterface
 
     public function onCommand(ConsoleCommandEvent $event): void
     {
-        $this->blameableListener->setUserValue($event->getCommand()->getName());
+        if(method_exists($this->blameableListener, 'setActorProvider'))
+        {
+            $this->blameableListener->setActorProvider(new CommandActionProvider($event->getCommand()->getName()));
+        }
+        else
+        {
+            $this->blameableListener->setUserValue($event->getCommand()->getName());
+        }
     }
 
     public function onTerminate(ConsoleTerminateEvent $event): void
