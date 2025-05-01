@@ -1,0 +1,28 @@
+framework:
+    secret: "test"
+    test: ~
+
+doctrine:
+    dbal:
+        driver: "pdo_sqlite"
+        path:   "%kernel.cache_dir%/../database.db3"
+
+    orm:
+        mappings:
+            Test:
+                dir: '%kernel.project_dir%/'
+                prefix: 'Kikwik\CommandBlameableBundle\Tests\Util\App\Entity'
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    Kikwik\CommandBlameableBundle\Tests\Util\App\Command\:
+        resource: '%kernel.project_dir%/App/Command/'
+
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            blameable: true
